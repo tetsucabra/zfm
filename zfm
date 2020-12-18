@@ -1,0 +1,22 @@
+#!bin/fish
+
+set file (ls -a $PWD | dmenu -c -l 10 -sb "#c274a4" -i -p "$PWD")
+if [ $file = "exit" ]
+    break
+end
+
+set program (ls /bin/ | dmenu -p "Execute?" -c -l 10 -sb "#c274a4" -i)
+
+if [ $program = "zfm" ]
+    cd $file
+    continue
+
+else if [ $fileOrFolder = "exit" ]
+    break
+
+else
+    $program $file
+    break
+end
+
+end

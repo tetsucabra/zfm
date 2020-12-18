@@ -1,0 +1,63 @@
+#+title: README For ZFM
+
+* To Install
+
+  Copy copy the zfm file to /bin
+
+  #+begin_src bash
+  
+  cd *FOLDER*
+  cp zfm /bin/
+
+  #+end_src
+
+* Code Documentation
+
+** Mark as a Fish File
+
+  #+begin_src fish :tangle zfm
+
+    #!/bin/fish
+
+  #+end_src
+
+** Main Loop for the program
+
+  #+begin_src fish : tangle zfm
+
+    while true
+
+  #+end_src
+
+*** Find a File to Open or Close ZFM
+   #+begin_src fish :tangle zfm
+       set file (ls -a $PWD | dmenu -c -l 10 -sb "#c274a4" -i -p "$PWD")
+       if [ $file = "exit" ]
+           break
+       end
+   #+end_src
+
+
+*** Choose a Program to Open
+   #+begin_src fish :tangle zfm
+       set program (ls /bin/ | dmenu -p "Execute?" -c -l 10 -sb "#c274a4" -i)
+   #+end_src
+
+*** Open in the Program or Reopen in ZFM
+   #+begin_src fish :tangle zfm
+       if [ $program = "zfm" ]
+           cd $file
+           continue
+
+       else if [ $fileOrFolder = "exit" ]
+           break
+
+       else
+           $program $file
+           break
+       end
+   #+end_src
+*** End Loop
+   #+begin_src fish :tangle zfm
+     end
+   #+end_src
