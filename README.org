@@ -1,12 +1,30 @@
 #+title: README For ZFM
 
+
+* Dependencies
+  To run zfm, dmenu and the fish shell are needed. Dmenu should have the "center" patch enabled, but if you do not have it installed, the simply change
+  #+begin_src fish
+    set file (ls -a $PWD | dmenu -c -l 10 -sb "#c274a4" -i -p "$PWD")
+  #+end_src
+  with
+  #+begin_src fish
+    set file (ls -a $PWD | dmenu -l 10 -sb "#c274a4" -i -p "$PWD")
+  #+end_src
+  and
+  #+begin_src fish
+    set program (ls /bin/ | dmenu -p "Execute?" -c -l 10 -sb "#c274a4" -i)
+  #+end_src
+  with
+  #+begin_src fish
+    set program (ls /bin/ | dmenu -p "Execute?" -l 10 -sb "#c274a4" -i)
+  #+end_src
 * To Install
 
   Copy copy the zfm file to /bin
 
   #+begin_src bash
   
-  cd *FOLDER*
+  cd zfm
   cp zfm /bin/
 
   #+end_src
